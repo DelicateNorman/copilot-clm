@@ -6,6 +6,7 @@ import threading
 import urllib.error
 import urllib.request
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from socketserver import TCPServer
 from urllib.parse import urlsplit
 
 from .storage import MAX_BYTES, encode, private_dir, write_json
@@ -19,6 +20,13 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
 
 class Proxy(ThreadingHTTPServer):
     daemon_threads = True
+
+    def server_bind(self):
+        # HTTPServer reverse-resolves its address for server_name. A private
+        # loopback listener needs no DNS; macOS can stall startup on that lookup.
+        TCPServer.server_bind(self)
+        self.server_name = "127.0.0.1"
+        self.server_port = self.server_address[1]
 
     def __init__(self, engine, upstream, token, api_key="", timeout=180):
         parsed = urlsplit(upstream)

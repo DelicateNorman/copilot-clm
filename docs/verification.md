@@ -7,7 +7,7 @@ provider requests are not included in the public repository.
 
 | Check | Result |
 |---|---|
-| Unit, HTTP and launcher tests | 31 passed |
+| Unit, HTTP and launcher tests | 32 passed |
 | Native CLI + scripted Responses provider | 4 requests, 1 accepted edit, resume passed |
 | Native CLI + scripted Chat Completions provider | 4 requests, 1 accepted edit, resume passed |
 | Native CLI + real gateway, model ID `gpt-6.2-sol` | 6 requests, 1 accepted edit, final retained fact correct |
@@ -25,6 +25,8 @@ gateway model identifier; this test does not independently attest the underlying
 model. Chat Completions was tested with the native CLI and scripted provider, not
 with a paid model in this review. Native CLI execution was tested on Linux only;
 CI separately exercises the Python tests and build on Linux and macOS.
+The live trace below was captured at commit `1f9698f`; the subsequent fix removes
+reverse DNS from loopback listener startup and leaves request projection unchanged.
 
 ## Live trace
 
@@ -66,6 +68,8 @@ The provider may invalidate persisted reasoning when its prefix changes; see
   environment, and return a proper error on an upstream connection failure.
 - Reap the native child when the launcher receives SIGINT/SIGTERM, release the
   state lock, and bound reads of rejected mirror files.
+- Bind the private loopback listener without reverse DNS, after macOS CI exposed
+  a startup delay in the standard HTTP server's hostname lookup.
 
 The first four regression cases added during review failed on the original
 adapter: cross-cache-session edits, ambiguous recovery, budget notices and note

@@ -94,6 +94,15 @@ class ProxyTests(unittest.TestCase):
             self.assertIn("upstream connection failed", data["error"]["message"])
             self.assertNotIn("private network details", str(data))
 
+    def test_loopback_listener_does_not_require_reverse_dns(self):
+        with patch("socket.getfqdn", side_effect=OSError("reverse DNS unavailable")):
+            server = Proxy(Engine(self.temp.name), "http://127.0.0.1:1/v1", "local-token")
+            try:
+                self.assertEqual(server.server_address[0], "127.0.0.1")
+                self.assertGreater(server.server_port, 0)
+            finally:
+                server.server_close()
+
     def test_utility_usage_is_recorded_without_creating_a_context_stream(self):
         body = {"model": "test", "input": [{"role": "user", "content": "summarize"}]}
         with self.send(body) as response:
