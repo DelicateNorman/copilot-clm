@@ -1,0 +1,107 @@
+{
+  "date": "2026-11-21",
+  "platform": "Linux",
+  "python": "3.12.3",
+  "copilot_cli": "1.0.114",
+  "unit_http_launcher_tests": 31,
+  "native_scripted": [
+    {
+      "result": "PASS",
+      "wire_api": "responses",
+      "cli_version": "GitHub Copilot CLI 1.0.114.",
+      "provider_requests": 4,
+      "accepted_edits": 1,
+      "native_transcript_preserved": true,
+      "native_resume_preserved_projection": true
+    },
+    {
+      "result": "PASS",
+      "wire_api": "completions",
+      "cli_version": "GitHub Copilot CLI 1.0.114.",
+      "provider_requests": 4,
+      "accepted_edits": 1,
+      "native_transcript_preserved": true,
+      "native_resume_preserved_projection": true
+    }
+  ],
+  "live_smoke": {
+    "gateway_model_id": "gpt-6.2-sol",
+    "wire_api": "responses",
+    "result": "PASS",
+    "provider_requests": 6,
+    "accepted_edits": 1,
+    "requests_with_edited_output": 2,
+    "fixture_before_characters": 4970,
+    "fixture_after_characters": 50,
+    "provider_usage": [
+      {
+        "request": 1,
+        "input_tokens": 5334,
+        "output_tokens": 26,
+        "cached_tokens": 2014,
+        "cache_write_tokens": 3317,
+        "edited_fixture_present": false
+      },
+      {
+        "request": 2,
+        "input_tokens": 6694,
+        "output_tokens": 144,
+        "cached_tokens": 5331,
+        "cache_write_tokens": 1360,
+        "edited_fixture_present": false
+      },
+      {
+        "request": 3,
+        "input_tokens": 6875,
+        "output_tokens": 135,
+        "cached_tokens": 6691,
+        "cache_write_tokens": 181,
+        "edited_fixture_present": false
+      },
+      {
+        "request": 4,
+        "input_tokens": 7068,
+        "output_tokens": 249,
+        "cached_tokens": 6872,
+        "cache_write_tokens": 193,
+        "edited_fixture_present": false
+      },
+      {
+        "request": 5,
+        "input_tokens": 6036,
+        "output_tokens": 59,
+        "cached_tokens": 5331,
+        "cache_write_tokens": 702,
+        "edited_fixture_present": true
+      },
+      {
+        "request": 6,
+        "input_tokens": 6304,
+        "output_tokens": 15,
+        "cached_tokens": 6033,
+        "cache_write_tokens": 268,
+        "edited_fixture_present": true
+      }
+    ],
+    "totals": {
+      "input_tokens": 38311,
+      "output_tokens": 628,
+      "cached_tokens": 32272,
+      "cache_write_tokens": 6021
+    },
+    "limitation": "Explicit edit requested; one run; no efficiency control. Gateway model ID is not an independent attestation of the underlying model."
+  },
+  "source_sha256": {
+    "copilot_clm/__init__.py": "c3ca072bbfb238cb0558fa0ab2b57f3085a2f73625bce8b2f78f965a57400151",
+    "copilot_clm/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "copilot_clm/cli.py": "4dd2a02e5c1a4a8a36bd92cb56945b41ce89ea06535bcfc83a0dfd4d34c08ebd",
+    "copilot_clm/engine.py": "31ac28d5559221cb95cce2413c91efe3a04d697cfdf3e87a35264747c9b1f66a",
+    "copilot_clm/proxy.py": "952e088ec2092e7ce20865211cfc087d6feb13f4c4c04887205bb629e0766cf3",
+    "copilot_clm/storage.py": "c5a5f7b482cac8480542d81295fd3796fef223bfcbed332634755c577b775c51",
+    "tests/live_smoke.py": "f9c71eacc0023890d4bc639e5c7a2709e27042bdef6d5b59121185f21a19b937",
+    "tests/native_smoke.py": "90de994438070335f28f53e5202da2f98719834b4b219fed3de580c971b9aa4c",
+    "tests/test_cli.py": "8762caede86b21fcf51899a708d54a1c4ded902ec25d4f476c3351eaf5829df3",
+    "tests/test_engine.py": "d2cea69f96028a944dca59b10852a6962ebf8ab464db06ec8990b5efb501297d",
+    "tests/test_proxy.py": "e1a0d24c30c840f64e11bf23f7f74693b77f142376937e526dc56f4b6bd20e7f"
+  }
+}
